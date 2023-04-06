@@ -1,0 +1,27 @@
+services:
+
+    traefik:
+        image: traefik:latest
+        container_name: Traefik
+        ports:
+            - 80:80
+            - 443:443
+            - 8080:8080
+        networks:
+            - traefik
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - /etc/traefik/traefik.yaml:/etc/traefik/traefik.yaml:ro
+
+
+networks:
+
+    traefik:
+        name: Traefik
+
+
+volumes:
+
+    traefik:
+        name: Traefik
